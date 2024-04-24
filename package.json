@@ -1,0 +1,27 @@
+{
+  "name": "memory-backend",
+  "version": "1.0.0",
+  "description": "mern learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MehmetKaldirim/memory-backend.git"
+  },
+  "author": "Mehmet Kaldirim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MehmetKaldirim/memory-backend/issues"
+  },
+  "homepage": "https://github.com/MehmetKaldirim/memory-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
