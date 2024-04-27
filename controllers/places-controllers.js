@@ -1,4 +1,3 @@
-const uuid = require("uuid");
 const { validationResult } = require("express-validator");
 const mongoose = require("mongoose");
 
@@ -179,8 +178,8 @@ const deletePlace = async (req, res, next) => {
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
-    //await place.remove({ session: sess });
-    await Place.findByIdAndDelete(placeId);
+    await place.deleteOne({ session: sess });
+    //await Place.findByIdAndDelete(placeId);
     place.creator.places.pull(place);
     await place.creator.save({ session: sess });
     await sess.commitTransaction();
