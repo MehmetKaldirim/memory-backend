@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
+
 const placesRoutes = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
 
@@ -31,10 +32,11 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(MONGO_URI)
   .then(() => {
-    console.log("database connected");
+    console.log("Connected to database!");
     app.listen(5001);
   })
   .catch((err) => {
-    console.log(process.env.MONGO_USER);
+    console.log("Connection failed!");
     console.log(err);
+    console.log(MONGO_URI);
   });
