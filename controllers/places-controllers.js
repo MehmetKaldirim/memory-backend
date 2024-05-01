@@ -47,11 +47,11 @@ const getPlacesByUserId = async (req, res, next) => {
   }
 
   // if (!places || places.length === 0) {
-  if (!userWithPlaces || userWithPlaces.places.length === 0) {
-    return next(
-      new HttpError("Could not find places for the provided user id.", 404)
-    );
-  }
+  // if (!userWithPlaces || userWithPlaces.places.length === 0) {
+  //   return next(
+  //     new HttpError("Could not find places for the provided user id.", 404)
+  //   );
+  // }
 
   res.json({
     places: userWithPlaces.places.map((place) =>
