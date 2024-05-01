@@ -45,11 +45,11 @@ const signup = async (req, res, next) => {
     );
     return next(error);
   }
-
+  //"https://avatars.githubusercontent.com/u/45769545?s=96&v=4",
   const createdUser = new User({
     name, // name: name
     email,
-    image: "https://avatars.githubusercontent.com/u/45769545?s=96&v=4",
+    image: req.file.path,
     password,
     places: [],
   });

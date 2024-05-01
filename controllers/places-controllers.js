@@ -1,3 +1,4 @@
+const fs = require("fs");
 const { validationResult } = require("express-validator");
 const mongoose = require("mongoose");
 
@@ -76,14 +77,13 @@ const createPlace = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
-
+  //"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/400px-Empire_State_Building_%28aerial_view%29.jpg"
   const createdPlace = new Place({
     title,
     description,
     address,
     location: coordinates,
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/400px-Empire_State_Building_%28aerial_view%29.jpg",
+    image: req.file.path,
     creator,
   });
 
@@ -174,7 +174,7 @@ const deletePlace = async (req, res, next) => {
     const error = new HttpError("Could not find place for this id.", 404);
     return next(error);
   }
-
+  const imagePath = place.image;
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
@@ -191,6 +191,10 @@ const deletePlace = async (req, res, next) => {
     console.log(err);
     return next(error);
   }
+
+  fs.unlink(imagePath, (err) => {
+    console.log(err);
+  });
 
   res.status(200).json({ message: "Deleted place." });
 };
