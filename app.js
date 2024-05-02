@@ -10,7 +10,8 @@ const usersRoutes = require("./routes/users-routes");
 
 const HttpError = require("./models/http-error");
 
-const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.89wbtaz.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority&appName=Cluster0`;
+console.log(process.env.DB_USER);
+const MONGO_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.89wbtaz.mongodb.net/${process.env.DB_DEFAULT_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
 
 const app = express();
 
