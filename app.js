@@ -11,7 +11,10 @@ const usersRoutes = require("./routes/users-routes");
 const HttpError = require("./models/http-error");
 
 console.log(process.env.DB_USER);
+
 const MONGO_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.89wbtaz.mongodb.net/${process.env.DB_DEFAULT_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
+const MONGO_HURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_TASSWORD}@nodejs.21uzyeo.mongodb.net/${process.env.DB_DEFAULT_NAME}?retryWrites=true&w=majority&appName=nodejs
+`;
 
 const app = express();
 
@@ -51,7 +54,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(MONGO_URI)
+  .connect(MONGO_HURI)
   .then(() => {
     console.log("Connected to database!");
     app.listen(5001);
