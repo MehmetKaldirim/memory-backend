@@ -50,7 +50,7 @@ const signup = async (req, res, next) => {
 
   let hashedPassword;
   try {
-    hashedPassword = await bbcrypt.hash(password, 12);
+    hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
     const error = new HttpError(
       "Could not create user, please try again..",
@@ -116,7 +116,7 @@ const login = async (req, res, next) => {
   }
   let isValidPassword;
   try {
-    isValidPassword = await bcrypt.compare(password, existingUser);
+    isValidPassword = await bcrypt.compare(password, existingUser.password);
   } catch (err) {
     const error = new HttpError(
       "Could not log you in, please check your credentials and try again",
