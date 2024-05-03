@@ -57,7 +57,7 @@ mongoose
   .connect(MONGO_HURI)
   .then(() => {
     console.log("Connected to database!");
-    app.listen(5001);
+    app.listen(process.env.PORT || 5001);
   })
   .catch((err) => {
     console.log("Connection failed!");
